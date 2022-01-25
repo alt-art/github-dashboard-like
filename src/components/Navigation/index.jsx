@@ -5,6 +5,7 @@ import Item from './Item';
 
 const Container = styled.div`
   display: flex;
+  position: fixed;
   flex-direction: column;
   align-items: center;
   background-color: #ff9898;
@@ -16,13 +17,13 @@ function Navigation() {
   return (
     <Container>
       <Item>
-        <RepoIcon size={20} color="#C3DBC5" />
+        <RepoIcon size={20} color="#ececec" />
       </Item>
       <Item>
-        <PullRequestIcon size={20} color="#C3DBC5" />
+        <PullRequestIcon size={20} color="#ececec" />
       </Item>
       <Item>
-        <IssueIcon size={20} color="#C3DBC5" />
+        <IssueIcon size={20} color="#ececec" />
       </Item>
     </Container>
   );

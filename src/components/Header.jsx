@@ -1,0 +1,79 @@
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import DropDown from './DropDown';
+import DropDownItem from './DropDownItem';
+
+const HeaderContainer = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ff9898;
+  border-bottom: 3px solid #624cab;
+  padding: 0 20px;
+  width: 100vw;
+  height: 40px;
+`;
+
+const Link = styled.a`
+  background-color: #624cab;
+  border-radius: 4px;
+  color: #ececec;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 3px 10px;
+  text-decoration: none;
+`;
+
+const Avatar = styled.img`
+  border: 2px solid #624cab;
+  border-radius: 50%;
+  height: 33px;
+  width: 33px;
+  cursor: pointer;
+  background-color: #624cab;
+`;
+
+const DropDownLead = styled.div`
+  padding: 0 10px;
+  border-bottom: 1px solid #ececec;
+`;
+
+function Header() {
+  const [showDropDown, setShowDropDown] = React.useState(false);
+  const dropDownRef = React.useRef();
+  useEffect(() => {
+    document.addEventListener('mouseup', (e) => {
+      if (
+        !showDropDown
+        && dropDownRef.current
+        && !dropDownRef.current.contains(e.target)
+      ) {
+        setShowDropDown(false);
+      }
+    });
+    return () => document.removeEventListener('mouseup');
+  }, []);
+
+  return (
+    <HeaderContainer>
+      <Link href="https://github.com/explore">Explore</Link>
+      <Avatar
+        src="https://avatars3.githubusercontent.com/u/17098981?s=460&v=4"
+        onClick={() => setShowDropDown(true)}
+      />
+      {showDropDown && (
+        <DropDown ref={dropDownRef} top={40} right={8}>
+          <DropDownLead>
+            Signed in as
+            {' '}
+            <strong>user</strong>
+          </DropDownLead>
+          <DropDownItem href="settings">Settings</DropDownItem>
+          <DropDownItem>Logout</DropDownItem>
+        </DropDown>
+      )}
+    </HeaderContainer>
+  );
+}
+
+export default Header;

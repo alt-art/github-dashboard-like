@@ -1,12 +1,13 @@
 import React from 'react';
+import Header from './components/Header';
 import Navigation from './components/Navigation';
-import GlobalStyle from './GlobalStyle';
 
 function App() {
   return (
-    <GlobalStyle>
+    <div className="App">
+      <Header />
       <Navigation />
-    </GlobalStyle>
+    </div>
   );
 }
 
