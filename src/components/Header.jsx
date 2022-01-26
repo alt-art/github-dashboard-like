@@ -41,17 +41,18 @@ const DropDownLead = styled.div`
 function Header() {
   const [showDropDown, setShowDropDown] = React.useState(false);
   const dropDownRef = React.useRef();
+  function handleClickOutside(event) {
+    if (
+      !showDropDown
+      && dropDownRef.current
+      && !dropDownRef.current.contains(event.target)
+    ) {
+      setShowDropDown(false);
+    }
+  }
   useEffect(() => {
-    document.addEventListener('mouseup', (e) => {
-      if (
-        !showDropDown
-        && dropDownRef.current
-        && !dropDownRef.current.contains(e.target)
-      ) {
-        setShowDropDown(false);
-      }
-    });
-    return () => document.removeEventListener('mouseup');
+    document.addEventListener('mouseup', handleClickOutside);
+    return () => document.removeEventListener('mouseup', handleClickOutside);
   }, []);
 
   return (
