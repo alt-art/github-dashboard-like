@@ -1,52 +1,97 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 const DropDown = styled.div`
-  background-color: #ff9898;
+  background-color: #624cab;
   color: #ececec;
   font-weight: 500;
   position: absolute;
+  ${({ fade }) => fade
+    && css`
+      animation: ${fadeIn} 0.3s ease-in-out;
+    `}
   border-radius: 5px;
-  border: 1px solid #624cab;
+  border: 1px solid #ff9898;
   margin: 5px;
-  padding: 5px 0;
-  min-width: 160px;
-  ${(props) => props.top !== undefined
+  ${({ position }) => position === 'top'
     && css`
-      top: ${props.top}px;
+      min-width: 160px;
     `}
-  ${(props) => props.bottom !== undefined
+  ${({ top }) => top !== undefined
     && css`
-      bottom: ${props.bottom}px;
+      top: ${top}px;
     `}
-  ${(props) => props.left !== undefined
+  ${({ bottom }) => bottom !== undefined
     && css`
-      left: ${props.left}px;
+      bottom: ${bottom}px;
     `}
-  ${(props) => props.right !== undefined
+  ${({ left }) => left !== undefined
     && css`
-      right: ${props.right}px;
+      left: ${left}px;
+    `}
+  ${({ right }) => right !== undefined
+    && css`
+      right: ${right}px;
     `}
   &::before {
     content: '';
     display: block;
-    position: absolute;      
-    top: -20px;
-    right: 13px;
+    position: absolute;
     width: 0px;
-    height: 0px;                
+    height: 0px;
     border: 10px solid transparent;
-    border-bottom: 10px solid #624cab;
+    ${({ position }) => position === 'top'
+      && css`
+        top: -20px;
+        right: 13px;
+      `}
+    ${({ position }) => position === 'left'
+      && css`
+        top: 4px;
+        left: -20px;
+      `}
+    ${({ position }) => position === 'top'
+      && css`
+        border-bottom: 10px solid #ff9898;
+      `}
+    ${({ position }) => position === 'left'
+      && css`
+        border-right: 10px solid #ff9898;
+      `}
   }
   &::after {
     content: '';
     display: block;
     position: absolute;
-    top: -17px;
-    right: 14px;
+    ${({ position }) => position === 'top'
+      && css`
+        top: -18.5px;
+        right: 13px;
+      `}
+    ${({ position }) => position === 'left'
+      && css`
+        top: 4px;
+        left: -18.5px;
+      `}
     width: 0px;
     height: 0px;
-    border: 9px solid transparent;
-    border-bottom: 9px solid #ff9898;
+    border: 10px solid transparent;
+    ${({ position }) => position === 'top'
+      && css`
+        border-bottom: 10px solid #624cab;
+      `}
+    ${({ position }) => position === 'left'
+      && css`
+        border-right: 10px solid #624cab;
+      `}
   }
 `;
 

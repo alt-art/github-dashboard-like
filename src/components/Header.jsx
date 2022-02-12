@@ -35,6 +35,7 @@ const Avatar = styled.img`
 
 const DropDownLead = styled.div`
   padding: 0 10px;
+  margin: 10px 0;
   border-bottom: 1px solid #ececec;
 `;
 
@@ -63,7 +64,7 @@ function Header() {
         onClick={() => setShowDropDown(true)}
       />
       {showDropDown && (
-        <DropDown ref={dropDownRef} top={40} right={8}>
+        <DropDown ref={dropDownRef} top={40} right={8} position="top">
           <DropDownLead>
             Signed in as
             {' '}
