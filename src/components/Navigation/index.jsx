@@ -6,6 +6,7 @@ import Item from './Item';
 const Container = styled.nav`
   display: flex;
   flex-direction: column;
+  position: fixed;
   align-items: center;
   background-color: #ff9898;
   width: 50px;
@@ -15,13 +16,13 @@ const Container = styled.nav`
 function Navigation() {
   return (
     <Container>
-      <Item alt="Repositories">
+      <Item alt="Repositories" to="/repositories">
         <RepoIcon size={20} color="#ececec" />
       </Item>
-      <Item alt="Pull Requests">
+      <Item alt="Pull Requests" to="/pull-requests">
         <PullRequestIcon size={20} color="#ececec" />
       </Item>
-      <Item alt="Issues">
+      <Item alt="Issues" to="/issues">
         <IssueIcon size={20} color="#ececec" />
       </Item>
     </Container>
