@@ -5,20 +5,20 @@ import Navigation from './components/Navigation';
 import Router from './Router';
 
 const Content = styled.div`
-  height: 100vh;
-  width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
   padding-left: 50px;
 `;
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <Navigation />
       <Content>
         <Router />
       </Content>
-    </div>
+    </>
   );
 }
 

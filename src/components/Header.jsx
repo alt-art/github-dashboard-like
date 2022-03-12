@@ -10,7 +10,7 @@ const HeaderContainer = styled.header`
   background-color: #ff9898;
   border-bottom: 3px solid #624cab;
   padding: 0 20px;
-  width: 100vw;
+  width: 100%;
   height: 40px;
 `;
 

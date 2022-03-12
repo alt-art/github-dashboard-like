@@ -5,9 +5,9 @@
   font-family: 'Roboto', sans-serif;
 }
 
+
 body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  max-width: 100vw;
+  max-height: 100vh;
   background-color: #ececec;
 }
