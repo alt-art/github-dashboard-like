@@ -20,7 +20,6 @@ const DropDown = styled.div`
     `}
   border-radius: 5px;
   border: 1px solid #ff9898;
-  margin: 5px;
   ${({ position }) => position === 'top'
     && css`
       min-width: 160px;
@@ -55,7 +54,7 @@ const DropDown = styled.div`
       `}
     ${({ position }) => position === 'left'
       && css`
-        top: 4px;
+        top: 2px;
         left: -20px;
       `}
     ${({ position }) => position === 'top'
@@ -78,7 +77,7 @@ const DropDown = styled.div`
       `}
     ${({ position }) => position === 'left'
       && css`
-        top: 4px;
+        top: 2px;
         left: -18.5px;
       `}
     width: 0px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import { ForkIcon, StarIcon } from '../assets/icons';
 
 const Container = styled.div`
   background-color: #ff9898;
@@ -30,10 +31,15 @@ const Label = styled.span`
   border-radius: 2em;
   font-size: 0.8rem;
   font-weight: normal;
-  padding: 1px 5px;
-  margin-left: 5px;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  margin: 0 2px;
+  padding: 0.5em 1em;
   height: 23px;
-  border: 1px solid #624cab;
+  font-weight: 700;
+  background-color: #624cab;
+  color: #ececec;
 `;
 
 function RepoCard({ repo }) {
@@ -41,9 +47,19 @@ function RepoCard({ repo }) {
     <Container>
       <Wrapper>
         <Link href={repo.html_url}>{repo.name}</Link>
-        <Label>{repo.private ? 'Private' : 'Public'}</Label>
       </Wrapper>
       {repo.description && <p>{repo.description}</p>}
+      <Wrapper>
+        <Label>{repo.private ? 'Private' : 'Public'}</Label>
+        <Label>
+          { repo.stargazers_count }
+          <StarIcon color="#cecece" size={15} />
+        </Label>
+        <Label>
+          { repo.forks }
+          <ForkIcon color="#cecece" size={15} />
+        </Label>
+      </Wrapper>
     </Container>
   );
 }
@@ -56,5 +72,7 @@ RepoCard.propTypes = {
     html_url: propTypes.string.isRequired,
     description: propTypes.string,
     private: propTypes.bool.isRequired,
+    forks: propTypes.number.isRequired,
+    stargazers_count: propTypes.number.isRequired,
   }).isRequired,
 };
